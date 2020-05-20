@@ -1,0 +1,34 @@
+# necotec's docker-compose template with traefik
+version: "3"
+services:
+  # section "services"  
+  # a name for the docker instance
+  your_name_for_the_instance:
+    # the docker image
+    image: the_docker_image
+    # the port
+    expose:
+      - "80"
+    # labels for the traefik instance
+    labels:
+      # show in traefik
+      - traefik.enable=true
+      # the port for the traefik proxy
+      - traefik.port=80
+      # the subdomain 
+      - traefik.frontend.rule=Host:subdomain.yourdomain.com
+    # volumes are the place for the persistant data
+    volumes:
+      # the path to the persistant data
+      # on the left side, the data on the host. A colon as seperator. On the right side, the path to the data inside the container
+      - /path/to/your/dataplace:/path/to/containers/dataplace
+    networks:
+      # a networks for the new docker container
+      - your_new_network
+
+networks:
+  # the "new" network of the container
+  nginx3_default:
+    # connect to the external network "traefik_default"
+    external:
+      name: traefik_default
