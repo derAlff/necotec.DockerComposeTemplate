@@ -1,4 +1,6 @@
-# necotec's docker-compose template with traefik
+##################################################
+# necotec's docker-compose template with traefik #
+##################################################
 version: "3"
 services:
   # section "services"  
