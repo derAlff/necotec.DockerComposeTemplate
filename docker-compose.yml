@@ -30,7 +30,7 @@ services:
 
 networks:
   # the "new" network of the container
-  nginx3_default:
+  your_new_network:
     # connect to the external network "traefik_default"
     external:
       name: traefik_default
